@@ -1,5 +1,5 @@
 class ProductService {
-    constructor() {}
+    constructor(database) {}
 
     async allProducts() {
         return 'all'
