@@ -47,6 +47,21 @@ const cartItemSchema = {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: "created_at",
+  },
+  updatedAt: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    field: "updated_at",
+  },
+  deletedAt: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    field: "deleted_at",
+  },
 };
 
 class CartItem extends Model {

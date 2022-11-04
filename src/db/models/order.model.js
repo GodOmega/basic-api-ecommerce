@@ -17,6 +17,21 @@ const orderSchema = {
     type: DataTypes.FLOAT,
     allowNull: false,
   },
+  createdAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    field: "created_at",
+  },
+  updatedAt: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    field: "updated_at",
+  },
+  deletedAt: {
+    allowNull: true,
+    type: DataTypes.DATE,
+    field: "deleted_at",
+  },
 };
 
 class Order extends Model {
