@@ -1,5 +1,7 @@
 const { Category, categorySchema } = require("./category.model");
 const { Product, productSchema } = require("./product.model");
+const { Sequelize } = require("sequelize");
+
 const { Cart, cartSchema } = require("./cart.model");
 const { CartItem, cartItemSchema } = require("./cartItem.model");
 const { Order, orderSchema } = require("./order.model");

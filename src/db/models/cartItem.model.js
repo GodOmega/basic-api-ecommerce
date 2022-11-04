@@ -78,9 +78,6 @@ class CartItem extends Model {
       modelName: "CartItem",
       timestamps: true,
       paranoid: true,
-      createdAt: "created_at",
-      updateAt: "update_at",
-      deletedAt: "deleted_at",
     };
   }
 }

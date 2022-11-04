@@ -47,18 +47,18 @@ const productSchema = {
     allowNull: false,
   },
   createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE,
+    type: "TIMESTAMP",
     field: "created_at",
+    allowNull: false,
   },
   updatedAt: {
-    allowNull: true,
-    type: DataTypes.DATE,
+    type: "TIMESTAMP",
     field: "updated_at",
+    allowNull: true,
   },
   deletedAt: {
+    type: "TIMESTAMP",
     allowNull: true,
-    type: DataTypes.DATE,
     field: "deleted_at",
   },
 };
@@ -77,9 +77,6 @@ class Product extends Model {
       modelName: "Product",
       timestamps: true,
       paranoid: true,
-      createdAt: "created_at",
-      updateAt: "update_at",
-      deletedAt: "deleted_at",
     };
   }
 }

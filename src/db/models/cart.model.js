@@ -14,18 +14,18 @@ const cartSchema = {
     allowNull: false,
   },
   createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE,
+    type: "TIMESTAMP",
     field: "created_at",
+    allowNull: false,
   },
   updatedAt: {
-    allowNull: true,
-    type: DataTypes.DATE,
+    type: "TIMESTAMP",
     field: "updated_at",
+    allowNull: true,
   },
   deletedAt: {
+    type: "TIMESTAMP",
     allowNull: true,
-    type: DataTypes.DATE,
     field: "deleted_at",
   },
 };
