@@ -1,11 +1,11 @@
 "use strict";
 
 const { CATEGORY_TABLE } = require("../models/category.model");
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface) {
+  async up(queryInterface, sequelize) {
     await queryInterface.createTable(CATEGORY_TABLE, {
       id: {
         allowNull: false,
@@ -24,17 +24,20 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE,
+        type: "TIMESTAMP",
         field: "created_at",
+        defaultValue: Sequelize.NOW,
+        allowNull: false,
       },
       updatedAt: {
         allowNull: true,
-        type: DataTypes.DATE,
+        type: "TIMESTAMP",
         field: "updated_at",
+        allowNull: true,
       },
       deletedAt: {
+        type: "TIMESTAMP",
         allowNull: true,
-        type: DataTypes.DATE,
         field: "deleted_at",
       },
     });

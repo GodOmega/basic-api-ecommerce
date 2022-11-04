@@ -1,7 +1,7 @@
 "use strict";
 
 const { CART_TABLE } = require("../models/cart.model");
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -21,6 +21,7 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE,
         field: "created_at",
+        defaultValue: Sequelize.NOW,
       },
       updatedAt: {
         allowNull: true,

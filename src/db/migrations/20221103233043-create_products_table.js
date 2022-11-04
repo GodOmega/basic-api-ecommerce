@@ -2,7 +2,7 @@
 
 const { CATEGORY_TABLE } = require("../models/category.model");
 const { PRODUCT_TABLE } = require("../models/product.model");
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -54,6 +54,7 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE,
         field: "created_at",
+        defaultValue: Sequelize.NOW,
       },
       updatedAt: {
         allowNull: true,
