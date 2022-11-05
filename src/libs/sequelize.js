@@ -16,6 +16,10 @@ const options = {
   logging: database.isProd ? false : console.log,
 };
 
+/**
+ * Singleton to return Database instance
+ */
+
 let sequelize = null;
 
 function setupDatabase() {
@@ -25,7 +29,7 @@ function setupDatabase() {
 
   sequelize = new Sequelize(URI, options);
   setupModels(sequelize);
-  console.log("INIT DB");
+  console.log("INIT DATABASE");
   return sequelize;
 }
 
