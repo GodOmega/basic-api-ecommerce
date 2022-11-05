@@ -66,7 +66,7 @@ const productSchema = {
 class Product extends Model {
   static associate(models) {
     this.belongsTo(models.Category, {
-      as: "categories",
+      as: "category",
     });
   }
 
