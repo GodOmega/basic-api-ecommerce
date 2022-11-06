@@ -74,6 +74,10 @@ class CartService {
       where: { cartId, productId },
     });
 
+    if (cart.status !== "ACTIVE") {
+      throw new Error("Bad Request");
+    }
+
     if (!item) {
       throw new Error("item not found");
     }
