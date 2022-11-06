@@ -75,9 +75,7 @@ class CartService {
     });
 
     if (!item) {
-      if (!cart) {
-        throw new Error("item not found");
-      }
+      throw new Error("item not found");
     }
 
     await item.destroy();
