@@ -1,8 +1,8 @@
 const setupDatabase = require('../../libs/sequelize')
 
-const database = setupDatabase()
+const { models } = setupDatabase()
 const service = require('./service.js')
 
 
-module.exports = new service(database);
+module.exports = new service(models.Product);
 
