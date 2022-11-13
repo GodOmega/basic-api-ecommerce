@@ -1,14 +1,43 @@
 const express = require("express");
 const router = express.Router();
+
 const service = require("./index");
+const validatorHandler = require("../../middlewares/validator.handler");
+
+const {
+  getCartSchema,
+  createCartSchema,
+  updateCartSchema,
+  addOrUpdateItemSchema,
+  removeItemSchema,
+} = require("./validationSchema");
 
 router.get("/", getAll);
-router.post("/", createCart);
-router.get("/:id", getCart);
-router.patch("/:id", updateCart);
-router.delete("/:id", deleteCart);
-router.post("/:id/add-item", addOrUpdateCartItem);
-router.post("/:id/delete-item", deleteCartItem);
+router.post("/", validatorHandler(createCartSchema, "body"), createCart);
+router.get("/:id", validatorHandler(getCartSchema, "params"), getCart);
+
+router.patch(
+  "/:id",
+  validatorHandler(getCartSchema, "params"),
+  validatorHandler(updateCartSchema, "body"),
+  updateCart
+);
+
+router.delete("/:id", validatorHandler(getCartSchema, "params"), deleteCart);
+
+router.post(
+  "/:id/add-item",
+  validatorHandler(getCartSchema, "params"),
+  validatorHandler(addOrUpdateItemSchema, "body"),
+  addOrUpdateCartItem
+);
+
+router.post(
+  "/:id/delete-item",
+  validatorHandler(getCartSchema, "params"),
+  validatorHandler(removeItemSchema, "body"),
+  deleteCartItem
+);
 
 async function getAll(req, res, next) {
   try {
