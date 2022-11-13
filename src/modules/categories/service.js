@@ -1,3 +1,5 @@
+const boom = require("@hapi/boom");
+
 class CategoryService {
   constructor(Category) {
     this.categoryModel = Category;
@@ -10,6 +12,11 @@ class CategoryService {
 
   async getOne(id) {
     const category = await this.categoryModel.findByPk(id);
+
+    if (!category) {
+      throw boom.notFound("Category not found");
+    }
+
     return category;
   }
 
