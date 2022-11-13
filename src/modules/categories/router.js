@@ -1,13 +1,40 @@
 const express = require("express");
 const router = express.Router();
+
 const service = require("./index");
+const validatorHandler = require("../../middlewares/validator.handler");
 
+const {
+  getCategorySchema,
+  createCategorySchema,
+  updateCategorySchema,
+} = require("./validationSchema");
+
+// ROUTER
 router.get("/", getAll);
-router.get("/:id", getCategory);
-router.post("/", createCategory);
-router.patch("/:id", updateCategory);
-router.delete("/:id", deleteCategory);
+router.get("/:id", validatorHandler(getCategorySchema, "params"), getCategory);
 
+router.post(
+  "/",
+  validatorHandler(createCategorySchema, "body"),
+  createCategory
+);
+
+router.patch(
+  "/:id",
+  validatorHandler(getCategorySchema, "params"),
+  validatorHandler(updateCategorySchema, "body"),
+  updateCategory
+);
+
+router.delete(
+  "/:id",
+  validatorHandler(getCategorySchema, "params"),
+  deleteCategory
+);
+
+
+// ROUTER FUNCTIONS
 async function getAll(req, res) {
   try {
     const response = await service.getAll();
@@ -59,7 +86,7 @@ async function updateCategory(req, res) {
 async function deleteCategory(req, res) {
   try {
     const { id } = req.params;
-    console.log(id)
+    console.log(id);
     const response = await service.delete(id);
     res.json(response);
   } catch (error) {
