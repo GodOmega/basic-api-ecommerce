@@ -17,7 +17,7 @@ class OrderService {
     const order = await this.orderModel.findByPk(id);
 
     if (!order) {
-      throw new Error("Order not found");
+      throw boom.notFound("Order not found");
     }
 
     return order;
@@ -36,10 +36,14 @@ class OrderService {
     });
 
     if (!cart || cart.status !== "ACTIVE") {
-      throw boom.notFound("Cart no founds");
+      throw boom.badRequest("Cart undefined or inactive");
     }
 
     const { cartItems } = cart.toJSON();
+
+    if (!cartItems) {
+      throw boom.badRequest("Cart items undefined");
+    }
 
     // Total of CartItems price SUM
     const [result] = await this.db.query(
