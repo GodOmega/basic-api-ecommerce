@@ -1,3 +1,5 @@
+const boom = require("@hapi/boom");
+
 class CartService {
   constructor(Cart, CartItem, Product) {
     this.cartModel = Cart;
@@ -13,7 +15,7 @@ class CartService {
     const cart = await this.cartModel.findByPk(id);
 
     if (!cart) {
-      throw new Error("Cart not found");
+      throw boom.notFound("Cart not found");
     }
 
     return cart;
@@ -42,7 +44,7 @@ class CartService {
     const cart = await this.getOne(cartId);
 
     if (cart.status !== "ACTIVE") {
-      throw new Error("Bad Request");
+      throw boom.badRequest("Cart is not active");
     }
 
     const { productId } = data;
@@ -75,11 +77,11 @@ class CartService {
     });
 
     if (cart.status !== "ACTIVE") {
-      throw new Error("Bad Request");
+      throw boom.badRequest("Cart is not active");
     }
 
     if (!item) {
-      throw new Error("item not found");
+      throw boom.notFound("Item not found");
     }
 
     await item.destroy();
