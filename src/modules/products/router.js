@@ -1,16 +1,34 @@
 const express = require("express");
 const router = express.Router();
+
 const service = require("./index");
+const validatorHandler = require("../../middlewares/validator.handler");
+
+const {
+  getProductSchema,
+  createProductSchema,
+  updateProductSchema,
+} = require("./validationSchema");
 
 router.get("/", getAll);
-router.get("/:id", getProduct);
-router.post("/", createProduct);
-router.patch("/:id", updateProduct);
-router.delete("/:id", deleteProduct);
+router.get("/:id", validatorHandler(getProductSchema, "params"), getProduct);
+router.post("/", validatorHandler(createProductSchema, "body"), createProduct);
+
+router.patch(
+  "/:id",
+  validatorHandler(getProductSchema, "params"),
+  validatorHandler(updateProductSchema, "body"),
+  updateProduct
+);
+
+router.delete(
+  "/:id",
+  validatorHandler(getProductSchema, "params"),
+  deleteProduct
+);
 
 async function getAll(req, res) {
   try {
-    console.log('all')
     const response = await service.getAll();
     res.json(response);
   } catch (error) {
