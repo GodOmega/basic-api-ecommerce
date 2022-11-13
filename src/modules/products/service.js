@@ -1,3 +1,5 @@
+const boom = require('@hapi/boom')
+
 class ProductService {
     constructor(Product) {
         this.productModel = Product
@@ -9,6 +11,11 @@ class ProductService {
     
       async getOne(id) {
         const product = await this.productModel.findByPk(id);
+
+        if(!product) {
+          throw boom.notFound('Product not found')
+        }
+
         return product;
       }
     
