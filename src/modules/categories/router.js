@@ -33,66 +33,54 @@ router.delete(
   deleteCategory
 );
 
-
 // ROUTER FUNCTIONS
-async function getAll(req, res) {
+async function getAll(req, res, next) {
   try {
     const response = await service.getAll();
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
-async function getCategory(req, res) {
+async function getCategory(req, res, next) {
   try {
     const { id } = req.params;
     const response = await service.getOne(id);
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
-async function createCategory(req, res) {
+async function createCategory(req, res, next) {
   try {
     const { body } = req;
     const newCategory = await service.create(body);
     res.status(201).json(newCategory);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
-async function updateCategory(req, res) {
+async function updateCategory(req, res, next) {
   try {
     const { id } = req.params;
     const { body } = req;
     const category = await service.update(id, body);
     res.json(category);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
-async function deleteCategory(req, res) {
+async function deleteCategory(req, res, next) {
   try {
     const { id } = req.params;
-    console.log(id);
     const response = await service.delete(id);
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
