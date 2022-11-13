@@ -14,7 +14,9 @@ class OrderService {
   }
 
   async getOne(id) {
-    const order = await this.orderModel.findByPk(id);
+    const order = await this.orderModel.findByPk(id, {
+      include: ['orderItems']
+    });
 
     if (!order) {
       throw boom.notFound("Order not found");
