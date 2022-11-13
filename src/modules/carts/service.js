@@ -12,7 +12,14 @@ class CartService {
   }
 
   async getOne(id) {
-    const cart = await this.cartModel.findByPk(id);
+    const cart = await this.cartModel.findByPk(id, {
+      include: [
+        {
+          association: "cartItems",
+          attributes: ["productId", "cartId", "price", "sku", "quantity"],
+        },
+      ],
+    });
 
     if (!cart) {
       throw boom.notFound("Cart not found");
