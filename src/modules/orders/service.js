@@ -41,7 +41,7 @@ class OrderService {
 
     const { cartItems } = cart.toJSON();
 
-    // Cart Total Amount
+    // Total of CartItems price SUM
     const [result] = await this.db.query(
       "SELECT SUM(price * quantity) AS total FROM cart_items WHERE cart_id = :cartId",
       { replacements: { cartId }, type: QueryTypes.SELECT }
