@@ -22,14 +22,12 @@ router.patch(
 );
 router.delete("/:id", validatorHandler(getOrderSchema, "params"), deleteOrder);
 
-async function getAll(req, res) {
+async function getAll(req, res, next) {
   try {
     const response = await service.getAll();
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
@@ -39,9 +37,7 @@ async function getOrder(req, res) {
     const response = await service.getOne(id);
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
@@ -51,9 +47,7 @@ async function createOrder(req, res) {
     const newOrder = await service.create(body);
     res.json(newOrder);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
@@ -64,9 +58,7 @@ async function updateOrder(req, res) {
     const response = await service.update(id, body);
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
@@ -76,9 +68,7 @@ async function deleteOrder(req, res) {
     const response = await service.delete(id);
     res.json(response);
   } catch (error) {
-    res.json({
-      message: error,
-    });
+    next(error);
   }
 }
 
