@@ -29,7 +29,8 @@ router.delete(
 
 async function getAll(req, res, next) {
   try {
-    const response = await service.getAll();
+    const { query } = req;
+    const response = await service.getAll(query);
     res.json(response);
   } catch (error) {
     next(error);
