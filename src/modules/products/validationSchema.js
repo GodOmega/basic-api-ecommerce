@@ -9,6 +9,9 @@ const categoryId = Joi.number().integer();
 const price = Joi.number().positive().precision(2);
 const quantity = Joi.number().integer();
 
+const size = Joi.number().positive();
+const page = Joi.number().integer().min(0);
+
 const getProductSchema = Joi.object({
   id: id.required(),
 });
@@ -35,8 +38,14 @@ const updateProductSchema = Joi.object({
   quantity,
 });
 
+const filterParams = Joi.object({
+  size,
+  page,
+});
+
 module.exports = {
   getProductSchema,
+  filterParams,
   createProductSchema,
   updateProductSchema,
 };
