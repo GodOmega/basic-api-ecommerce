@@ -2,7 +2,6 @@ const Joi = require("joi");
 
 const id = Joi.number().integer();
 const status = Joi.string().min(4);
-const sku = Joi.string().min(5);
 const productId = Joi.number().integer();
 const quantity = Joi.number().integer();
 
