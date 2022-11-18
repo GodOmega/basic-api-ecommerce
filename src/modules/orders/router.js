@@ -8,9 +8,10 @@ const {
   getOrderSchema,
   createOrderSchema,
   updateOrderSchema,
+  filterSchema,
 } = require("./validationSchema");
 
-router.get("/", getAll);
+router.get("/", validatorHandler(filterSchema, "query"), getAll);
 router.post("/", validatorHandler(createOrderSchema, "body"), createOrder);
 router.get("/:id", validatorHandler(getOrderSchema, "params"), getOrder);
 
@@ -24,7 +25,8 @@ router.delete("/:id", validatorHandler(getOrderSchema, "params"), deleteOrder);
 
 async function getAll(req, res, next) {
   try {
-    const response = await service.getAll();
+    const { query } = req;
+    const response = await service.getAll(query);
     res.json(response);
   } catch (error) {
     next(error);

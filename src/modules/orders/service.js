@@ -1,6 +1,9 @@
 const boom = require("@hapi/boom");
 const { QueryTypes } = require("sequelize");
 
+const getPaginationValues = require("../../utils/getPaginationValues");
+const getPaginatedStructure = require("../../utils/getPaginatedStructure");
+
 class OrderService {
   constructor(Order, OrderItem, Cart, db) {
     this.orderModel = Order;
@@ -8,9 +11,16 @@ class OrderService {
     this.cartModel = Cart;
     this.db = db;
   }
-  async getAll() {
-    const orders = await this.orderModel.findAll();
-    return orders;
+  async getAll({ page, size }) {
+    const { limit, offset } = getPaginationValues(page, size);
+    const orders = await this.orderModel.findAndCountAll({
+      limit,
+      offset,
+    });
+
+    const dataPaginated = getPaginatedStructure(orders, page, limit);
+
+    return dataPaginated;
   }
 
   async getOne(id) {
