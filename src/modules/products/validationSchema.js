@@ -38,14 +38,14 @@ const updateProductSchema = Joi.object({
   quantity,
 });
 
-const filterParams = Joi.object({
+const filterSchema = Joi.object({
   size,
   page,
 });
 
 module.exports = {
   getProductSchema,
-  filterParams,
+  filterSchema,
   createProductSchema,
   updateProductSchema,
 };

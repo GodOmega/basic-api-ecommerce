@@ -8,10 +8,10 @@ const {
   getProductSchema,
   createProductSchema,
   updateProductSchema,
-  filterParams
+  filterSchema
 } = require("./validationSchema");
 
-router.get("/", validatorHandler(filterParams, "query"), getAll);
+router.get("/", validatorHandler(filterSchema, "query"), getAll);
 router.get("/:id", validatorHandler(getProductSchema, "params"), getProduct);
 router.post("/", validatorHandler(createProductSchema, "body"), createProduct);
 
