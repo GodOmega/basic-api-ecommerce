@@ -8,10 +8,11 @@ const {
   getCategorySchema,
   createCategorySchema,
   updateCategorySchema,
+  filterSchema
 } = require("./validationSchema");
 
 // ROUTER
-router.get("/", getAll);
+router.get("/", validatorHandler(filterSchema, "query"), getAll);
 router.get("/:id", validatorHandler(getCategorySchema, "params"), getCategory);
 
 router.post(
@@ -36,7 +37,8 @@ router.delete(
 // ROUTER FUNCTIONS
 async function getAll(req, res, next) {
   try {
-    const response = await service.getAll();
+    const { query } = req;
+    const response = await service.getAll(query);
     res.json(response);
   } catch (error) {
     next(error);
