@@ -1,6 +1,9 @@
 const ProductService = require("../../src/modules/products/service");
 const ProductMock = require("../mocks/models/product.model.mock");
-const { generateManyProducts } = require("../fakes/products.fake");
+const {
+  generateManyProducts,
+  generateOneProduct,
+} = require("../fakes/products.fake");
 
 describe("Testing Product service", () => {
   let productService;
@@ -21,5 +24,25 @@ describe("Testing Product service", () => {
   test("Should find one product", async () => {
     const product = await productService.getOne(1);
     expect(product.name).toBe(productModelMock.products[1].name);
+  });
+
+  test("Should create one product", async () => {
+    const product = generateOneProduct();
+    const newProduct = await productService.create(product);
+    expect(newProduct).toMatchObject(product);
+  });
+
+  test("Should update one product", async () => {
+    const changes = {
+      name: "updated product",
+    };
+    const product = await productService.update(1, changes);
+    expect(product.name).toEqual(changes.name);
+  });
+
+  test("Should delete one product", async () => {
+    const response = await productService.delete(1);
+    expect(productModelMock.products.length).toBe(1);
+    expect(response.message).toEqual('product 1 deleted');
   });
 });
