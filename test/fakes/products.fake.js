@@ -1,8 +1,12 @@
 const fake = require("@ngneat/falso");
 
 const generateOneProduct = () => ({
-  _id: fake.randUuid(),
-  name: fake.randProductName(),
+  title: fake.randProductName(),
+  slug: fake.randSlug(),
+  description: fake.randProductDescription(),
+  sku: fake.randNumber({min:600000, max:10000000}),
+  quantity: fake.randNumber({min: 1, max: 100}),
+  categoryId: fake.randNumber({min: 1, max: 3}),
   price: fake.randNumber({ min: 10, max: 500 }),
 });
 

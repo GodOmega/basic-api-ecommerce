@@ -1,9 +1,8 @@
 const fake = require("@ngneat/falso");
 
 const generateOneCategory = () => ({
-  _id: fake.randUuid(),
-  name: fake.randProductName(),
-  price: fake.randNumber({ min: 10, max: 500 }),
+  name: fake.randProductCategory(),
+  description: fake.randProductDescription(),
 });
 
 const generateManyCategories = (size) => {
