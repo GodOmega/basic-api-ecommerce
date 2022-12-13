@@ -5,7 +5,7 @@ const { generateManyCategories } = require("../fakes/categories.fake");
 const { generateManyProducts } = require("../fakes/products.fake");
 const setupDatabase = require("../../src/libs/sequelize");
 
-describe("[e2e TEST] Product api", function () {
+describe("[e2e TEST] Product API", function () {
   let sequelize = null;
   let models = null;
   let server = null;
@@ -22,7 +22,6 @@ describe("[e2e TEST] Product api", function () {
 
   after(async () => {
     await server.close();
-    await sequelize.close();
   });
 
   it("should get all products without errors", function (done) {
