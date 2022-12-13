@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run test:jest && npm run test:e2e",
     "test:jest": "cross-env NODE_ENV=test jest",
-    "test:e2e": "cross-env NODE_ENV=test mocha --config ./test/e2e/.mocharc.js",
+    "test:e2e": "cross-env NODE_ENV=test mocha --config ./test/e2e/.mocharc.js --require ./test/e2e/hooks.js",
     "dev": "nodemon ./src",
     "start": "node ./src",
     "migrations:generate": "sequelize-cli migration:generate --name",
