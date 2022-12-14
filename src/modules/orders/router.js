@@ -47,7 +47,7 @@ async function createOrder(req, res) {
   try {
     const { body } = req;
     const newOrder = await service.create(body);
-    res.json(newOrder);
+    res.status(201).json(newOrder);
   } catch (error) {
     next(error);
   }

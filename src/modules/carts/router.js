@@ -94,7 +94,7 @@ async function addOrUpdateCartItem(req, res, next) {
     const { id } = req.params;
     const { body } = req;
     const response = await service.addOrUpdateItem(id, body);
-    res.json(response);
+    res.status(201).json(response);
   } catch (error) {
     next(error);
   }
