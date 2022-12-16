@@ -1,4 +1,5 @@
 const express = require('express')
+const helmet = require("helmet");
 const app = express()
 
 
@@ -6,8 +7,8 @@ const {errorHandler, boomErrorHandler} = require('./middlewares/errors.handler')
 const setRoutes = require('./routes')
 
 // CONFIG
+app.use(helmet());
 app.use(express.json());
-
 
 // ROUTES
 setRoutes(app)
