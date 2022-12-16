@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const { database } = require("../config");
+const { database, testDatabase } = require("../config");
 const setupModels = require("../db/models");
 
 const USER = encodeURIComponent(database.user);
@@ -17,15 +17,7 @@ const options = {
 
 // TEST CONFIG
 const nodeEnv = process.env.NODE_ENV;
-const configTest = {
-  dialect: "mysql",
-  host: "localhost",
-  name: "ecommerce-test",
-  port: "3306",
-  user: "root",
-  password: "",
-};
-const testURI = `${configTest.dialect}://${configTest.user}:${configTest.password}@${configTest.host}:${database.port}/${configTest.name}`;
+const testURI = `${testDatabase.type}://${testDatabase.user}:${testDatabase.password}@${testDatabase.host}:${database.port}/${testDatabase.name}`;
 
 /**
  * Singleton to return Database instance
