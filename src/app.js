@@ -17,10 +17,12 @@ app.use(express.json());
 // ROUTES
 setRoutes(app);
 
-// Setup SWAGGER DOC
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSetup));
+// SETUP SWAGGER DOC
+if (process.env.NODE_ENV !== "production") {
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSetup));
+}
 
-// Handling Erros
+// HANDLING ERRORS
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
