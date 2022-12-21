@@ -424,7 +424,7 @@ router.post(
 
 async function getAll(req, res, next) {
   try {
-    const response = await service.getAll();
+    const response = await service.getAll(req.query);
     res.json(response);
   } catch (error) {
     next(error);

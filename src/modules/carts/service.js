@@ -1,14 +1,23 @@
 const boom = require("@hapi/boom");
 
+const getPaginationValues = require("../../utils/getPaginationValues");
+const getPaginatedStructure = require("../../utils/getPaginatedStructure");
+
 class CartService {
   constructor(Cart, CartItem, Product) {
     this.cartModel = Cart;
     this.cartItemModel = CartItem;
     this.productModel = Product;
   }
-  async getAll() {
-    const carts = await this.cartModel.findAll();
-    return carts;
+  async getAll({ page, size }) {
+    const { limit, offset } = getPaginationValues(page, size);
+    const carts = await this.cartModel.findAndCountAll({
+      limit,
+      offset,
+    });
+
+    const dataPaginated = getPaginatedStructure(carts, page, limit);
+    return dataPaginated;
   }
 
   async getOne(id) {
