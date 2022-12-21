@@ -51,11 +51,89 @@ const swaggerDefinition = {
         type: "object",
         required: ["name", "description"],
         properties: {
-            name: {
+          name: {
             type: "string",
           },
           description: {
             type: "string",
+          },
+        },
+      },
+      cart: {
+        type: "object",
+        required: ["status"],
+        properties: {
+          status: {
+            type: "string",
+            example: "ACTIVE",
+          },
+        },
+      },
+      cartItem: {
+        type: "object",
+        required: ["productId", "quantity"],
+        properties: {
+          productId: {
+            type: "number",
+            example: 1,
+          },
+          cartId: {
+            type: "number",
+            example: 1,
+          },
+          active: {
+            type: "boolean",
+            example: true,
+          },
+          price: {
+            type: "number",
+            example: 100,
+          },
+          quantity: {
+            type: "number",
+            example: 5,
+          },
+          sku: {
+            type: "string",
+            example: "0123910a3",
+          },
+        },
+      },
+      order: {
+        type: "object",
+        properties: {
+          status: {
+            type: "string",
+            example: "PROCESS",
+          },
+          total: {
+            type: "number",
+            example: 100,
+          },
+        },
+      },
+      orderItem: {
+        type: "object",
+        properties: {
+          productId: {
+            type: "number",
+            example: 1,
+          },
+          orderId: {
+            type: "number",
+            example: 1,
+          },
+          price: {
+            type: "number",
+            example: 100,
+          },
+          quantity: {
+            type: "number",
+            example: 5,
+          },
+          sku: {
+            type: "string",
+            example: "0123910a3",
           },
         },
       },
