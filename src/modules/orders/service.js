@@ -25,7 +25,7 @@ class OrderService {
 
   async getOne(id) {
     const order = await this.orderModel.findByPk(id, {
-      include: ['orderItems']
+      include: ["orderItems"],
     });
 
     if (!order) {
@@ -59,7 +59,7 @@ class OrderService {
 
     // Total of CartItems price SUM
     const [result] = await this.db.query(
-      "SELECT SUM(price * quantity) AS total FROM cart_items WHERE cart_id = :cartId",
+      "SELECT SUM(price * quantity) AS total FROM cart_items WHERE cart_id = :cartId AND deleted_at IS NOT NULL",
       { replacements: { cartId }, type: QueryTypes.SELECT }
     );
 
