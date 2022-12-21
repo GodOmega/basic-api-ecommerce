@@ -64,7 +64,7 @@ class CartService {
       const product = await this.productModel.findByPk(productId);
       data = {
         ...data,
-        cartId,
+        cartId: cart.id,
         price: product.price,
         sku: product.sku,
       };
