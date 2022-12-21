@@ -42,7 +42,7 @@ const swaggerDefinition = {
           quantity: {
             type: "number",
           },
-          quantity: {
+          price: {
             type: "number",
           },
         },
