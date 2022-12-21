@@ -33,7 +33,7 @@ const {
  *              type: integer
  *      responses:
  *        '200':
- *          description: Response an array of categories and all metadata information.
+ *          description: Response an array of carts and all metadata information.
  *          content:
  *            application/json:
  *              schema:
@@ -142,7 +142,8 @@ router.post("/", validatorHandler(createCartSchema, "body"), createCart);
  *                    example: ACTIVE
  *                  cartItems:
  *                    type: array
- *                    example: ["cartItems"]
+ *                    items: 
+ *                      $ref: "#/components/schemas/cartItem" 
  *        '400':
  *          description: Validation error.
  *          content:
@@ -189,7 +190,7 @@ router.get("/:id", validatorHandler(getCartSchema, "params"), getCart);
  *            type: integer
  *      responses:
  *        '200':
- *          description: Response a cart item updated.
+ *          description: Response a cart updated.
  *          content:
  *            application/json:
  *              schema:
