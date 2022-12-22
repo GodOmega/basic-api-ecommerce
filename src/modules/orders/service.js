@@ -57,9 +57,9 @@ class OrderService {
       throw boom.badRequest("Cart items undefined");
     }
 
-    // Total of CartItems price SUM
+    // Calculate Total of CartItems price 
     const [result] = await this.db.query(
-      "SELECT SUM(price * quantity) AS total FROM cart_items WHERE cart_id = :cartId AND deleted_at IS NOT NULL",
+      "SELECT SUM(price * quantity) AS total FROM cart_items WHERE cart_id = :cartId AND deleted_at IS NULL",
       { replacements: { cartId }, type: QueryTypes.SELECT }
     );
 
