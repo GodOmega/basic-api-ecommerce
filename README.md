@@ -7,12 +7,15 @@ Welcome to my basic backend API proyect, I started this project to practice my N
 ### Installation
 #### Step 1
 **1.**  Make sure you have a version of Node greater than or equal to 16.
+
 **2.**  Download this repository.
-**3. ** run: ```npm install ``` in you command line to download all dependencies.
+
+**3.** run: ```npm install ``` in you command line to download all dependencies.
 
 #### Step 2
 **1.**  Prepare a SQL based database** (I recommend Mysql or MariaDB for this proyect)**.
-**2. **  Copy .env.example content inside of a new .env and fill the env variables, for example:
+
+**2.**  Copy .env.example content inside of a new .env and fill the env variables, for example:
 
 ![](https://res.cloudinary.com/dqd4krsof/image/upload/v1672176786/README%20IMAGES/BASIC%20API%20ECOMMERCE/a_a9wvea.png)
 
