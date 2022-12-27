@@ -13,7 +13,7 @@ Welcome to my basic backend API proyect, I started this project to practice my N
 **3.** run: ```npm install ``` in you command line to download all dependencies.
 
 #### Step 2
-**1.**  Prepare a SQL based database** (I recommend Mysql or MariaDB for this proyect)**.
+**1.**  Prepare a SQL based database **(I recommend Mysql or MariaDB for this proyect)**.
 
 **2.**  Copy .env.example content inside of a new .env and fill the env variables, for example:
 
@@ -39,7 +39,7 @@ In case you want to modify the proyect and test if all features still working, y
 
 `npm run test` **<-- command to run all tests**
 
-`npm run test:general`** <-- command to run unit and integration tests **
+`npm run test:general` **<-- command to run unit and integration tests**
 
 `npm run test:e2e` **<-- command to run end to end tests**
 
