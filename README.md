@@ -18,7 +18,7 @@ Welcome to my basic backend API proyect, I started this project to practice my N
 
 > **Test variables are for run the unit, integration and end to end tests**
 
-**3. ** run `npm run migrations:run` to generate migrations in your database table.
+**3.** run `npm run migrations:run` to generate migrations in your database table.
 
 **4.** run `npm start` to start the server or `npm run dev` in case you want to be in development mode. 
 
@@ -29,7 +29,7 @@ Welcome to my basic backend API proyect, I started this project to practice my N
 ### Run Testing
 In case you want to modify the proyect and test if all features still working, you can follow this steps:
 
-**1. ** Make sure you filled all test database env variables because you need them for e2e tests **(you dont need run migrations to run tests)**.
+**1.** Make sure you filled all test database env variables because you need them for e2e tests **(you dont need run migrations to run tests)**.
 > I recommend create a second table for testing.
 
 **2.**  You can run all the tests or separate e2e tests, for example:
@@ -43,7 +43,7 @@ In case you want to modify the proyect and test if all features still working, y
 ------------
 
 
-### Explanation of decions
+### Explanation of decisions
 
 Hello there, if you got this far it means you read the whole readme (or just skipped to the end 🥸),  first of all thanks for taking a look at my project I really appreciate it. Now, I will give a little context on some of the decisions I made in building this project that you might be interested in:
 
